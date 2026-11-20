@@ -1,0 +1,167 @@
+
+/* Tablets and smaller screens */
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 15px 5%;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 65px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        letter-spacing: -1px;
+    }
+
+    .hero-description {
+        max-width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .detector-card {
+        padding: 20px;
+    }
+
+    .upload-box {
+        padding: 40px 18px;
+    }
+
+    .about-section {
+        padding: 60px 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+
+    .navbar {
+        padding: 12px 4%;
+        gap: 8px;
+    }
+
+    .brand {
+        font-size: 15px;
+        gap: 6px;
+    }
+
+    .brand-icon {
+        width: 29px;
+        height: 29px;
+    }
+
+    .nav-links {
+        gap: 9px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .theme-toggle {
+        width: 35px;
+        height: 35px;
+        flex-shrink: 0;
+    }
+
+    .hero {
+        padding: 55px 16px;
+    }
+
+    .hero h1 {
+        font-size: clamp(30px, 8vw, 36px);
+        line-height: 1.2;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .detector-section {
+        padding: 45px 15px;
+    }
+
+    .detector-card {
+        padding: 15px;
+    }
+
+    .upload-box {
+        padding: 32px 12px;
+    }
+
+    .upload-box h3 {
+        font-size: 18px;
+    }
+
+    .file-info {
+        font-size: 11px;
+    }
+
+    .analyse-button {
+        width: 100%;
+    }
+
+    .about-section {
+        padding: 45px 16px;
+    }
+
+    .about-section h2 {
+        font-size: 28px;
+    }
+
+    .result-container {
+        padding: 22px 16px;
+    }
+
+    footer {
+        padding: 25px 15px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+
+    .brand {
+        font-size: 13px;
+    }
+
+    .nav-links {
+        gap: 7px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .theme-toggle {
+        width: 31px;
+        height: 31px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+}
