@@ -12,7 +12,7 @@ async function analyseImage() {
 
     // Make sure an image has been selected
     if (!image) {
-        statusMessage.textContent = "Please upload an image first.";
+        statusMessage.textContent = "Please upload an image first";
         return;
     }
 
@@ -21,7 +21,7 @@ async function analyseImage() {
     analyseBtn.textContent = "Analysing...";
     statusMessage.textContent = "Preparing image for analysis...";
 
-    prediction.textContent = "Please wait while your image is analysed.";
+    prediction.textContent = "Please wait while your image is analysed";
 
     resultSection.scrollIntoView({
         behavior: "smooth",
@@ -50,7 +50,7 @@ async function analyseImage() {
                 (Number(result.confidence) * 100).toFixed(2)
             }%`;
 
-        statusMessage.textContent = "Analysis completed successfully.";
+        statusMessage.textContent = "Analysis completed successfully";
 
     } catch (error) {
         console.error("Analysis error:", error);
@@ -59,7 +59,7 @@ async function analyseImage() {
             "Analysis could not be completed.";
 
         statusMessage.textContent =
-            "Could not connect to the AI server. Please check that the backend is running.";
+            "Could not connect to the AI server. Please check that the backend is running";
     } finally {
         analyseBtn.disabled = false;
         analyseBtn.innerHTML = 'Analyse image <span>→</span>';
