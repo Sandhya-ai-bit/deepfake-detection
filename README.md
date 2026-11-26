@@ -35,4 +35,5 @@ pip install -r requirements.txt
 ```sh
 uvicorn main:app
 ```
+
 The page can be viewed at `http://127.0.0.1:8000/` by default, can be changed with flags.
