@@ -1,9 +1,9 @@
-
 const analyseBtn = document.getElementById("analyseBtn");
 const imageInput = document.getElementById("imageInput");
 const statusMessage = document.getElementById("statusMessage");
 const resultSection = document.getElementById("resultSection");
 const prediction = document.getElementById("prediction");
+let reportUrl;
 
 analyseBtn.addEventListener("click", analyseImage);
 
@@ -29,7 +29,7 @@ async function analyseImage() {
     });
 
     try {
-        // Send the image to the Flask backend
+        // Send the image to the FastAPI backend
         const formData = new FormData();
         formData.append("image", image);
 
@@ -39,16 +39,30 @@ async function analyseImage() {
         });
 
         if (!response.ok) {
-            throw new Error("Unable to analyse the image. Please try again.");
+            const error = await response.json();
+            throw new Error(error.detail || "Unable to analyse the image. Please try again.");
         }
 
-        const result = await response.json();
+        const confidence = Number(response.headers.get("X-Confidence"));
+        const resultLabel = response.headers.get("X-Prediction") || "Unknown";
+        const report = await response.blob();
+        if (reportUrl) URL.revokeObjectURL(reportUrl);
+        reportUrl = URL.createObjectURL(report);
 
-        // Display the actual model prediction
         prediction.textContent =
-            `Prediction: ${result.prediction} | Confidence: ${
-                (Number(result.confidence) * 100).toFixed(2)
+            `Prediction: ${resultLabel} | Confidence: ${
+                (confidence * 100).toFixed(2)
             }%`;
+
+        let reportLink = document.getElementById("reportDownload");
+        if (!reportLink) {
+            reportLink = document.createElement("a");
+            reportLink.id = "reportDownload";
+            reportLink.textContent = "Download PDF report";
+            resultSection.appendChild(reportLink);
+        }
+        reportLink.href = reportUrl;
+        reportLink.download = "deepfake_detection_report.pdf";
 
         statusMessage.textContent = "Analysis completed successfully";
 
@@ -58,7 +72,7 @@ async function analyseImage() {
         prediction.textContent =
             "Analysis could not be completed.";
 
-        statusMessage.textContent =
+        statusMessage.textContent = error.message ||
             "Could not connect to the AI server. Please check that the backend is running";
     } finally {
         analyseBtn.disabled = false;
