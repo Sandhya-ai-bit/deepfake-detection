@@ -1,2 +1,14 @@
-Backend/reports/report_DF-*.pdf
-Backend/__pycache__/*
+
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Generated PDF reports
+Backend/reports/report_DF-*.pdf*
+
+# Environment variables and secrets
+.env
